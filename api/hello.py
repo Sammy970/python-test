@@ -9,8 +9,17 @@ def get_og_tags():
     # Get the URL from the query parameter
     url = request.args.get('url')
 
+    # Define the proxy URL
+    proxy_url = 'http://20.204.212.45:3129'
+
+    # Set up the proxy
+    proxy = {
+        'http': proxy_url,
+        'https': proxy_url
+    }
+
     # Make a request to the URL
-    response = requests.get(url)
+    response = requests.get(url, proxies=proxy)
     response.raise_for_status()
 
     # Create a BeautifulSoup object
