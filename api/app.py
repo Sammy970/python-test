@@ -9,6 +9,10 @@ def get_og_tags():
     # Get the URL from the query parameter
     url = request.args.get('url')
 
+     # Check if the URL is provided
+    if not url:
+        return jsonify({'error': 'Please provide a URL.', 'how': '?url=<your link here>'})
+
     # Make a request to the URL
     response = requests.get(url)
     response.raise_for_status()
@@ -23,8 +27,3 @@ def get_og_tags():
     og_data = {tag['property'][3:]: tag['content'] for tag in og_tags}
 
     return jsonify(og_data)
-
-    # return "hello"
-
-# if __name__ == '__main__':
-#     app.run()
