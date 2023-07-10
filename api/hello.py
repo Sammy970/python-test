@@ -6,23 +6,25 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def get_og_tags():
-    # Get the URL from the query parameter
-    url = request.args.get('url')
+    # # Get the URL from the query parameter
+    # url = request.args.get('url')
 
-    # Make a request to the URL
-    response = requests.get(url)
-    response.raise_for_status()
+    # # Make a request to the URL
+    # response = requests.get(url)
+    # response.raise_for_status()
 
-    # Create a BeautifulSoup object
-    soup = BeautifulSoup(response.text, 'html.parser')
+    # # Create a BeautifulSoup object
+    # soup = BeautifulSoup(response.text, 'html.parser')
 
-    # Find all meta tags with property starting with 'og:'
-    og_tags = soup.find_all('meta', property=lambda x: x and x.startswith('og:'))
+    # # Find all meta tags with property starting with 'og:'
+    # og_tags = soup.find_all('meta', property=lambda x: x and x.startswith('og:'))
 
-    # Extract the content attribute from the og tags
-    og_data = {tag['property'][3:]: tag['content'] for tag in og_tags}
+    # # Extract the content attribute from the og tags
+    # og_data = {tag['property'][3:]: tag['content'] for tag in og_tags}
 
-    return jsonify(og_data)
+    # return jsonify(og_data)
+
+    return "hello"
 
 # if __name__ == '__main__':
 #     app.run()
